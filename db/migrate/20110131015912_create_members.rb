@@ -4,8 +4,8 @@ class CreateMembers < ActiveRecord::Migration
       t.string :name
       t.string :address
       t.string :email
-      t.string :twitter
-      t.string :blog
+      t.string :twitter_id
+      t.string :blog_url
       t.date :birthday
       t.text :profile
 
