@@ -1,0 +1,26 @@
+ja:
+  activerecord:
+    models:
+      event: "イベント"  #g
+      member: "メンバー"  #g
+      entry: "エントリ"  #g
+
+    attributes:
+      event:
+        name: "名"  #g
+        date_on: "日に"  #g
+        place: "プレイス"  #g
+        contents: "目次"  #g
+
+      member:
+        name: "名"  #g
+        address: "住所"  #g
+        email: "Eメール"  #g
+        twitter: "さえずり"  #g
+        blog: "ブログ"  #g
+        birthday: "誕生日"  #g
+        profile: "プロフィール"  #g
+
+      entry:
+        event: "イベント"  #g
+        member: "メンバー"  #g
