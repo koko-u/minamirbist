@@ -1,0 +1,21 @@
+
+h1 {
+  font-size: x-large;
+  font-family: monospace;
+  color: white;
+  padding: 2px;
+  background-color: green;
+  width: 200px;
+  text-align: center;
+}
+
+h2 {
+  font-size: large;
+  font-family: fantasy;
+  color: white;
+  padding: 1px;
+  background-color: #60F;
+  width: 200px;
+  text-align: center;
+}
+

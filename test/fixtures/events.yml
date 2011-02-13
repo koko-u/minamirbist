@@ -1,13 +1,15 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  name: MyString
-  date_on: 2011-01-29
-  place: MyString
-  contents: MyText
+rails_5th:
+  id: 1
+  name: 第５回Rails勉強会
+  date_on: 2011-02-26
+  place: 浪速区民センター
+  contents: 初心者レッスンを仕切り直して、演習中心の４回シリーズの２回目です。
 
-two:
-  name: MyString
-  date_on: 2011-01-29
-  place: MyString
-  contents: MyText
+kansai_ruby_49th:
+  id: 2
+  name: 第４９回 Ruby/Rails 勉強会＠関西
+  date_on: 2011-03-12
+  place: クレオ大阪
+  contents: 現在募集中

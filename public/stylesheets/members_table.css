@@ -1,0 +1,43 @@
+table.members {
+  margin-top: 0.2em;
+  margin-bottom: 1em;
+  width: auto;
+  border-collapse: separate;
+  border-spacing: 2px;
+  font-size: 100%;
+}
+
+table.members caption {
+  margin-top: 1em;
+  text-align: right;
+}
+
+table.members th, td {
+  padding: 4px 6px;
+}
+
+table.members th {
+  background-color: #1B3AB4;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 92%;
+  color: #FFF;
+}
+
+tabe.members td {
+  text-align: right;
+  white-space: nowrap;
+}
+
+table.members col.contents {
+  background-color: #F8F8FF;
+}
+
+table.members col.profile {
+  background-color: #F8F8FF;
+  width: 200px;
+}
+
+table.members col.commands {
+  background-color: #F0FFFF;
+}

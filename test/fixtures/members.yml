@@ -1,19 +1,21 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  name: MyString
-  address: MyString
-  email: MyString
-  twitter: MyString
-  blog: MyString
-  birthday: 2011-01-29
-  profile: MyText
+kozaki:
+  id: 1
+  name: 小崎玄顕
+  address: 大阪市西成区千本南
+  email: kozaki.tsuneaki@gmail.com
+  twitter_id: koko_u
+  blog_url: http://d.hatena.ne.jp/koko_u/
+  birthday: 1973-12-30
+  profile: まったり過ごしたい
 
-two:
-  name: MyString
-  address: MyString
-  email: MyString
-  twitter: MyString
-  blog: MyString
-  birthday: 2011-01-29
-  profile: MyText
+tanaka:
+  id: 2
+  name: 田中一郎
+  address: 大阪市中央区法円坂
+  email: tanaka.ichiro@hotmail.com
+  twitter_id: tana7
+  blog_url: 
+  birthday: 1992-03-29
+  profile: 今日もメシがうまい

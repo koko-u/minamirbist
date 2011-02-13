@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 module NavigationHelpers
   # Maps a name to a path. Used by the
   #
@@ -8,8 +9,11 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
-    when /the home\s?page/
-      '/'
+    when '新規登録'
+      '/members/new'
+    when 'メンバー一覧'
+      '/members'
+
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

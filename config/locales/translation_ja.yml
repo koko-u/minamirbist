@@ -1,26 +1,47 @@
 ja:
   activerecord:
     models:
-      event: "イベント"  #g
-      member: "メンバー"  #g
-      entry: "エントリ"  #g
+      event: "イベント"
+      member: "メンバー"
+      entry: "エントリ"
 
     attributes:
       event:
-        name: "名"  #g
-        date_on: "日に"  #g
-        place: "プレイス"  #g
-        contents: "目次"  #g
+        name: "イベント名"
+        date_on: "開催日"
+        place: "開催場所"
+        contents: "イベント詳細"
+        entries:
+          count: "参加者数"
 
       member:
-        name: "名"  #g
-        address: "住所"  #g
-        email: "Eメール"  #g
-        twitter: "さえずり"  #g
-        blog: "ブログ"  #g
-        birthday: "誕生日"  #g
-        profile: "プロフィール"  #g
+        name: "名前"
+        address: "住所"
+        email: "Eメール"
+        twitter_id: "ツイッターID"
+        blog_url: "ブログURL"
+        birthday: "誕生日"
+        profile: "プロフィール"
 
       entry:
-        event: "イベント"  #g
-        member: "メンバー"  #g
+        event: "イベント"
+        member: "メンバー"
+  view:
+    title:
+      show: "参照"
+      edit: "編集"
+      back: "戻る"
+      destroy: "削除"
+      new: "新規登録"
+      join: "参加する"
+      commands: "操作"
+      listing_events: "イベント一覧"
+      listing_members: "メンバー一覧"
+      show_event: "イベント詳細"
+      show_event_members: "参加者一覧"
+      editing_event: "イベント編集"
+      new_event: "イベント登録"
+      new_member: "メンバー登録"
+      editing_member: "メンバー編集"
+    message:
+      "sure?": "本当に削除してよいですか？"

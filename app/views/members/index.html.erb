@@ -1,35 +1,39 @@
-<h1>Listing members</h1>
+<h1><%= t(:listing_members, :scope => [:view, :title]) %></h1>
 
-<table>
+<table class="members">
+  <col class="contents" span="6" />
+  <col class="profile" />
+  <col class="commands" span="3" />
   <tr>
-    <th>Name</th>
-    <th>Address</th>
-    <th>Email</th>
-    <th>Twitter</th>
-    <th>Blog url</th>
-    <th>Birthday</th>
-    <th>Profile</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th><%= t(:name, :default => "Name", :scope => [:activerecord, :attributes, :member]) %></th>
+    <th><%= t(:address, :default => "Address", :scope => [:activerecord, :attributes, :member]) %></th>
+    <th><%= t(:email, :default => "Email", :scope => [:activerecord, :attributes, :member]) %></th>
+    <th><%= t(:twitter_id, :default => "Twitter ID", :scope => [:activerecord, :attributes, :member]) %></th>
+    <th><%= t(:blog_url, :default => "Blog URL", :scope => [:activerecord, :attributes, :member]) %></th>
+    <th><%= t(:birthday, :default => "Birthday", :scope => [:activerecord, :attributes, :member]) %></th>
+    <th><%= t(:profile, :default => "Profile", :scope => [:activerecord, :attributes, :member]) %></th>
+    <th colspan="3"><%= t(:commands, :scope => [:view, :title]) %></th>
   </tr>
 
 <% @members.each do |member| %>
-  <tr>
+  <tr class="member">
     <td><%= member.name %></td>
     <td><%= member.address %></td>
     <td><%= member.email %></td>
     <td><%= member.twitter_id %></td>
     <td><%= member.blog_url %></td>
-    <td><%= member.birthday %></td>
+    <td><%= member.birthday.strftime('%Y/%m/%d') %></td>
     <td><%= member.profile %></td>
-    <td><%= link_to 'Show', member %></td>
-    <td><%= link_to 'Edit', edit_member_path(member) %></td>
-    <td><%= link_to 'Destroy', member, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to t(:show, :default => 'Show', :scope => [:view, :title]), member %></td>
+    <td><%= link_to t(:edit, :default => 'Edit', :scope => [:view, :title]), edit_member_path(member) %></td>
+    <td><%= link_to t(:destroy, :default => 'Destroy', :scope => [:view, :title]), member,
+                    :confirm => t(:sure?, :default => 'Are you sure?', :scope => [:view, :message]),
+                    :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Member', new_member_path %>
+<%= link_to t(:new, :default => 'New Member', :scope => [:view, :title]), new_member_path %> |
+<%= link_to t(:listing_events, :scope => [:view, :title]), events_path %>

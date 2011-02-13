@@ -11,34 +11,45 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :twitter_id %><br />
-    <%= f.text_field :twitter_id %>
-  </div>
-  <div class="field">
-    <%= f.label :blog_url %><br />
-    <%= f.text_field :blog_url %>
-  </div>
-  <div class="field">
-    <%= f.label :birthday %><br />
-    <%= f.date_select :birthday %>
-  </div>
-  <div class="field">
-    <%= f.label :profile %><br />
-    <%= f.text_area :profile %>
-  </div>
+  <table class="members">
+    <col />
+    <col class="contents" />
+    <tr class="field">
+      <th><%= f.label :name %></th>
+      <td><%= f.text_field :name %></td>
+    </tr>
+    <tr class="field">
+      <th><%= f.label :address %></th>
+      <td><%= f.text_field :address %></td>
+    </tr>
+    <tr class="field">
+      <th><%= f.label :email %></th>
+      <td><%= f.email_field :email %></td>
+    </tr>
+    <tr class="field">
+      <th><%= f.label :twitter_id %></th>
+      <td><%= f.text_field :twitter_id %></td>
+    </tr>
+    <tr class="field">
+      <th><%= f.label :blog_url %></th>
+      <td><%= f.url_field :blog_url %></td>
+    </tr>
+    <tr class="field">
+      <th><%= f.label :birthday %></th>
+      <td><%= select_year @member.birthday, :prefix => 'member',
+                                            :field_name => 'birthday(1i)',
+                                            :start_year => Time.now.year - 50, :end_year => Time.now.year %>年
+          <%= select_month @member.birthday, :prefix => 'member', :use_month_numbers => true,
+                                       :field_name => 'birthday(2i)' %>月
+          <%= select_day @member.birthday, :prefix => 'member', :field_name => 'birthday(3i)' %>日
+      </td>
+    </tr>
+    <tr class="field">
+      <th><%= f.label :profile %></th>
+      <td><%= f.text_area :profile %></td>
+    </tr>
+  </table>
+
   <div class="actions">
     <%= f.submit %>
   </div>

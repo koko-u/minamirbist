@@ -7,6 +7,7 @@
 
 
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "paths"))
+require 'date'
 
 前提 /^"([^"]*)"ページを表示している$/ do |page_name|
   Given %{I am on #{page_name}}
@@ -63,7 +64,7 @@ end
 end
 
 もし /^"([^"]*)"の日付として"([^"]*)"を選択する$/ do |date_label, date|
-  When %{I select "#{date}" as the "#{date_label}" date}
+  select_date_ja(date, :from => date_label)
 end
 
 もし /^"([^"]*)"をチェックする$/ do |field|
@@ -141,4 +142,26 @@ show_me_the_page = lambda { Then %{show me the page} }
 
 # backword-compat for old japanese translation.
 ならば /^デバッグ(?:のため)?$/, &show_me_the_page
+#"
 
+require 'webrat/core'
+module Webrat
+
+  class Scope
+    def select_date_ja(date_to_select, options ={})
+      date = date_to_select.is_a?(Date) || date_to_select.is_a?(Time) ?
+      date_to_select : Date.parse(date_to_select)
+
+      id_prefix = locate_id_prefix(options) do
+        year_field = FieldByIdLocator.new(@session, dom, /(.*?)_#{DATE_TIME_SUFFIXES[:year]}$/).locate
+        raise NotFoundError.new("No date fields were found") unless year_field && year_field.id =~ /(.*?)_1i/
+        $1
+      end
+
+      select date.year, :from => "#{id_prefix}_#{DATE_TIME_SUFFIXES[:year]}"
+      select date.month + '月', :from => "#{id_prefix}_#{DATE_TIME_SUFFIXES[:month]}"
+      select date.day, :from => "#{id_prefix}_#{DATE_TIME_SUFFIXES[:day]}"
+    end
+  end
+
+end

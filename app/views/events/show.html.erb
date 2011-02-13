@@ -1,25 +1,48 @@
+<h1><%= t(:show_event, :scope => [:view, :title]) %></h1>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @event.name %>
-</p>
+<table class="events">
+  <col />
+  <col class="contents">
+  <tr>
+    <th><%= t('event.name', :scope => [:activerecord, :attributes]) %></th>
+    <td><%= @event.name %></td>
+  </tr>
+  <tr>
+    <th><%= t('event.date_on', :scope => [:activerecord, :attributes]) %></th>
+    <td><%= @event.date_on.strftime('%Y年%m月%d日') %></td>
+  </tr>
+  <tr>
+    <th><%= t('event.place', :scope => [:activerecord, :attributes]) %></th>
+    <td><%= @event.place %></td>
+  </tr>
+  <tr>
+    <th><%= t('event.contents', :scope => [:activerecord, :attributes]) %></th>
+    <td><%= @event.contents %></td>
+  </tr>
+</table>
 
-<p>
-  <b>Date on:</b>
-  <%= @event.date_on %>
-</p>
+<br />
+<%= link_to t('edit', :scope => [:view, :title]), edit_event_path(@event) %> |
+<%= link_to t('back', :scope => [:view, :title]), events_path %> |
+<%= link_to t('join', :scope => [:view, :title]), '/not_yet_implemented' %>
 
-<p>
-  <b>Place:</b>
-  <%= @event.place %>
-</p>
+<hr />
+<h2><%= t(:show_event_members, :scope => [:view, :title]) %></h2>
+<table class="members">
+  <col class="contents" span="2" />
+  <col class="commands" />
+  <tr>
+    <th><%= t(:name, :scope => [:activerecord, :attributes, :member]) %></th>
+    <th><%= t(:twitter_id, :scope => [:activerecord, :attributes, :member]) %></th>
+    <th><%= t(:commands, :scope => [:view, :title]) %></th>
+  </tr>
+  <% @event.entries.each do |entry| %>
+  <tr>
+    <td><%= entry.member.name %></td>
+    <td><%= entry.member.twitter_id %></td>
+    <td><%= link_to t('show', :scope => [:view, :title]), member_path(entry.member) %></td>
+  </tr>
+  <% end %>
+</table>
 
-<p>
-  <b>Contents:</b>
-  <%= @event.contents %>
-</p>
-
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>

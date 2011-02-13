@@ -1,40 +1,38 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @member.name %>
-</p>
-
-<p>
-  <b>Address:</b>
-  <%= @member.address %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @member.email %>
-</p>
-
-<p>
-  <b>Twitter:</b>
-  <%= @member.twitter_id %>
-</p>
-
-<p>
-  <b>Blog url:</b>
-  <%= @member.blog_url %>
-</p>
-
-<p>
-  <b>Birthday:</b>
-  <%= @member.birthday %>
-</p>
-
-<p>
-  <b>Profile:</b>
-  <%= @member.profile %>
-</p>
+<table class="members">
+  <col />
+  <col class="contents" />
+  <tr>
+    <th><%= t('member.name', :scope => [:activerecord, :attributes]) %></th>
+    <td><%= @member.name %></td>
+  </tr>
+  <tr>
+    <th><%= t('member.address', :scope => [:activerecord, :attributes]) %></th>
+    <td><%= @member.address %></td>
+  </tr>
+  <tr>
+    <th><%= t('member.email', :scope => [:activerecord, :attributes]) %></th>
+    <td><%= @member.email %></td>
+  </tr>
+  <tr>
+    <th><%= t('member.twitter_id', :scope => [:activerecord, :attributes]) %></th>
+    <td><%= @member.twitter_id %></td>
+  </tr>
+  <tr>
+    <th><%= t('member.blog_url',  :scope => [:activerecord, :attributes]) %></th>
+    <td><%= @member.blog_url %></td>
+  </tr>
+  <tr>
+    <th><%= t('member.birthday',  :scope => [:activerecord, :attributes]) %></th>
+    <td><%= @member.birthday.strftime('%Y/%m/%d') %></td>
+  </tr>
+  <tr>
+    <th><%= t('member.profile',  :scope => [:activerecord, :attributes]) %></th>
+    <td><%= @member.profile %></td>
+  </tr>
+</table>
 
 
-<%= link_to 'Edit', edit_member_path(@member) %> |
-<%= link_to 'Back', members_path %>
+<%= link_to t('edit', :scope => [:view, :title]), edit_member_path(@member) %> |
+<%= link_to t('back', :scope => [:view, :title]), members_path %>

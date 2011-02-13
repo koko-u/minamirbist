@@ -1,0 +1,38 @@
+table.events {
+  margin-top: 0.2em;
+  margin-bottom: 1em;
+  width: auto;
+  border-collapse: separate;
+  border-spacing: 2px;
+  font-size: 100%;
+}
+
+table.events caption {
+  margin-top: 1em;
+  text-align: right;
+}
+
+table.events th, td {
+  padding: 4px 6px;
+}
+
+table.events th {
+  background-color: #009;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 92%;
+  color: #FFF;
+}
+
+tabe.events td {
+  text-align: right;
+  white-space: nowrap;
+}
+
+table.events col.contents {
+  background-color: #FFC;
+}
+
+table.events col.commands {
+  background-color: #CFC;
+}

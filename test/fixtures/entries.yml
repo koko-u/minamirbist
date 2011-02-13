@@ -1,9 +1,9 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+kozaki_rails_5th:
+  id: 1
+  event_id: 1   # rails_5th
+  member_id: 1  # kozaki
 
-one:
-  event: 
-  member: 
-
-two:
-  event: 
-  member: 
+tanaka_kansai_ruby_49th:
+  id: 2
+  event_id: 2   # kansai_ruby_49th
+  member_id: 2  # tanaka
