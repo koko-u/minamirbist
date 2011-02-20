@@ -1,4 +1,4 @@
-<h1><%= t(:show_event, :scope => [:view, :title]) %></h1>
+<h1><%= t('events.show', :scope => [:views]) %></h1>
 <p id="notice"><%= notice %></p>
 
 <table class="events">
@@ -23,25 +23,25 @@
 </table>
 
 <br />
-<%= link_to t('edit', :scope => [:view, :title]), edit_event_path(@event) %> |
-<%= link_to t('back', :scope => [:view, :title]), events_path %> |
-<%= link_to t('join', :scope => [:view, :title]), '/not_yet_implemented' %>
+<%= link_to t('edit', :scope => [:views, :global]), edit_event_path(@event) %> |
+<%= link_to t('back', :scope => [:views, :global]), events_path %> |
+<%= link_to t('events.join', :scope => [:views]), '/not_yet_implemented' %>
 
 <hr />
-<h2><%= t(:show_event_members, :scope => [:view, :title]) %></h2>
+<h2><%= t('events.members', :scope => [:views]) %></h2>
 <table class="members">
   <col class="contents" span="2" />
   <col class="commands" />
   <tr>
     <th><%= t(:name, :scope => [:activerecord, :attributes, :member]) %></th>
     <th><%= t(:twitter_id, :scope => [:activerecord, :attributes, :member]) %></th>
-    <th><%= t(:commands, :scope => [:view, :title]) %></th>
+    <th><%= t(:commands, :scope => [:views, :global]) %></th>
   </tr>
   <% @event.entries.each do |entry| %>
   <tr>
     <td><%= entry.member.name %></td>
     <td><%= entry.member.twitter_id %></td>
-    <td><%= link_to t('show', :scope => [:view, :title]), member_path(entry.member) %></td>
+    <td><%= link_to t('show', :scope => [:views, :global]), member_path(entry.member) %></td>
   </tr>
   <% end %>
 </table>

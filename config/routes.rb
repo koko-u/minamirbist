@@ -1,9 +1,15 @@
 Minamirbist::Application.routes.draw do
-  resources :entries
+
+#  get "sessions/create"
 
   resources :events
 
   resources :members
+
+  match "/auth/:provider/callback" => "sessions#create"
+  match "/signout" => "sessions#destroy", :as => :signout
+
+  root :to => 'sessions#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

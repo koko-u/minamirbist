@@ -1,4 +1,5 @@
-<h1><%= t(:listing_members, :scope => [:view, :title]) %></h1>
+<%= render 'shared/navigation' %>
+<h1><%= t('members.listing', :scope => [:views]) %></h1>
 
 <table class="members">
   <col class="contents" span="6" />
@@ -12,7 +13,7 @@
     <th><%= t(:blog_url, :default => "Blog URL", :scope => [:activerecord, :attributes, :member]) %></th>
     <th><%= t(:birthday, :default => "Birthday", :scope => [:activerecord, :attributes, :member]) %></th>
     <th><%= t(:profile, :default => "Profile", :scope => [:activerecord, :attributes, :member]) %></th>
-    <th colspan="3"><%= t(:commands, :scope => [:view, :title]) %></th>
+    <th colspan="3"><%= t(:commands, :scope => [:views, :global]) %></th>
   </tr>
 
 <% @members.each do |member| %>
@@ -24,10 +25,10 @@
     <td><%= member.blog_url %></td>
     <td><%= member.birthday.strftime('%Y/%m/%d') %></td>
     <td><%= member.profile %></td>
-    <td><%= link_to t(:show, :default => 'Show', :scope => [:view, :title]), member %></td>
-    <td><%= link_to t(:edit, :default => 'Edit', :scope => [:view, :title]), edit_member_path(member) %></td>
-    <td><%= link_to t(:destroy, :default => 'Destroy', :scope => [:view, :title]), member,
-                    :confirm => t(:sure?, :default => 'Are you sure?', :scope => [:view, :message]),
+    <td><%= link_to t(:show, :default => 'Show', :scope => [:views, :global]), member %></td>
+    <td><%= link_to t(:edit, :default => 'Edit', :scope => [:views, :global]), edit_member_path(member) %></td>
+    <td><%= link_to t(:destroy, :default => 'Destroy', :scope => [:views, :global]), member,
+                    :confirm => t(:sure?, :default => 'Are you sure?', :scope => [:views, :global]),
                     :method => :delete %></td>
   </tr>
 <% end %>
@@ -35,5 +36,5 @@
 
 <br />
 
-<%= link_to t(:new, :default => 'New Member', :scope => [:view, :title]), new_member_path %> |
-<%= link_to t(:listing_events, :scope => [:view, :title]), events_path %>
+<%= link_to t('members.new', :default => 'New Member', :scope => [:views]), new_member_path %> |
+<%= link_to t('events.listing', :scope => [:views]), events_path %>

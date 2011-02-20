@@ -1,0 +1,5 @@
+<div id="user_nav">
+<%= t(:welcom, :name => current_member.name, :scope => [:views, :global]) if session[:uid] %>
+<%= link_to t('member.profile', :scope => [:activerecord, :attributes]), member_path(current_member) %>
+<%= link_to t(:signout, :scope => [:views, :global]), signout_path %>
+</div>

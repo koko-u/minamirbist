@@ -1,5 +1,5 @@
-<h1><%= t(:new_event, :scope => [:view, :title]) %></h1>
+<h1><%= t('events.new', :scope => [:views]) %></h1>
 
 <%= render 'form' %>
 
-<%= link_to t('back', :scope => [:view, :title]), events_path %>
+<%= link_to t('back', :scope => [:views, :global]), events_path %>

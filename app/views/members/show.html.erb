@@ -1,5 +1,11 @@
 <p id="notice"><%= notice %></p>
 
+<div align="right">
+<%= button_to t(:destroy, :scope => [:views, :global]), current_member,
+              :confirm => t(:sure?, :default => 'Are you sure?', :scope => [:views, :global]),
+              :method => :delete %>
+</div>
+<% @member = current_member %>
 <table class="members">
   <col />
   <col class="contents" />
@@ -34,5 +40,5 @@
 </table>
 
 
-<%= link_to t('edit', :scope => [:view, :title]), edit_member_path(@member) %> |
-<%= link_to t('back', :scope => [:view, :title]), members_path %>
+<%= link_to t('edit', :scope => [:views, :global]), edit_member_path(@member) %> |
+<%= link_to t('back', :scope => [:views, :global]), members_path %>

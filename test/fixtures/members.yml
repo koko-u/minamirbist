@@ -9,6 +9,8 @@ kozaki:
   blog_url: http://d.hatena.ne.jp/koko_u/
   birthday: 1973-12-30
   profile: まったり過ごしたい
+  provider: twitter
+  uid: 150016460
 
 tanaka:
   id: 2
@@ -19,3 +21,5 @@ tanaka:
   blog_url: 
   birthday: 1992-03-29
   profile: 今日もメシがうまい
+  provider: twitter
+  uid: 000000000

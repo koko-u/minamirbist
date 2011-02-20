@@ -1,5 +1,5 @@
-<h1><%= t(:new_member, :scope => [:view, :title]) %></h1>
+<h1><%= t('members.new', :scope => [:views]) %></h1>
 
 <%= render 'form' %>
 
-<%= link_to t('back', :scope => [:view, :title]), members_path %>
+<%= link_to t('back', :scope => [:views, :global]), members_path %>
