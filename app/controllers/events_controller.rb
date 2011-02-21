@@ -80,4 +80,15 @@ class EventsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  # GET /event/1/join
+  def join
+    @event = Event.find(params[:id])
+    @event.join(current_member)
+
+    respond_to do |format|
+      format.html { redirect_to event_path(@event) }
+      format.xml  { render :xml => @event }
+    end
+  end
 end

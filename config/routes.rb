@@ -2,7 +2,9 @@ Minamirbist::Application.routes.draw do
 
 #  get "sessions/create"
 
-  resources :events
+  resources :events do
+    get 'join', :on => :member
+  end
 
   resources :members
 

@@ -25,4 +25,5 @@ describe "members/edit.html.erb" do
       assert_select "textarea#member_profile", :name => "member[profile]"
     end
   end
+
 end
