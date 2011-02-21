@@ -37,6 +37,6 @@ group :development, :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'launchy'
-  gem 'spork'
-  gem 'autotest'
+  gem 'spork', '~> 0.9.0.rc'
+  gem 'watchr'
 end
