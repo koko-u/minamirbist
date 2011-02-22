@@ -24,7 +24,7 @@ class EventsController < ApplicationController
   # GET /events/new
   # GET /events/new.xml
   def new
-    @event = Event.new
+    @event = Event.new(:organizer => current_member)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,6 +40,7 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.xml
   def create
+    params[:event].update(:organizer => current_member)
     @event = Event.new(params[:event])
 
     respond_to do |format|

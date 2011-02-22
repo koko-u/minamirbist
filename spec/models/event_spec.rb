@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 describe Event do
-  it "Event には主催者がいる"
+  it "主催者が必須"
   it "イベント名は必須"
   it "登録する時、イベントの開催日は未来日付である"
   it "開催場所は必須"

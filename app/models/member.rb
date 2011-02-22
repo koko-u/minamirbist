@@ -1,4 +1,5 @@
 class Member < ActiveRecord::Base
+  has_many :events, :foreign_key => "organizer"
   class CannotChangeValidator < ActiveModel::EachValidator
     def validate_each(record, attribute, value)
       record.errors[attribute] << I18n.t('cannt_change') unless Member.find(record.id)[attribute] == value

@@ -6,6 +6,7 @@
   <col class="commands" span="3" />
   <tr>
     <th><%= t('event.name', :scope => [:activerecord, :attributes]) %></th>
+    <th><%= t('event.organizer', :scope => [:activerecord, :attributes]) %></th>
     <th><%= t('event.date_on', :scope => [:activerecord, :attributes]) %></th>
     <th><%= t('event.place', :scope => [:activerecord, :attributes]) %></th>
     <th><%= t('event.contents', :scope => [:activerecord, :attributes]) %></th>
@@ -16,6 +17,7 @@
 <% @events.each do |event| %>
   <tr>
     <td><%= event.name %></td>
+    <td><%= event.organizer.name %></td>
     <td><%= event.date_on %></td>
     <td><%= event.place %></td>
     <td><%= event.contents %></td>

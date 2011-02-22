@@ -8,6 +8,7 @@ ja:
     attributes:
       event:
         name: "イベント名"
+        organizer: "主催者"
         date_on: "開催日"
         place: "開催場所"
         contents: "イベント詳細"
