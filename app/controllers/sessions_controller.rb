@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     unknown_user = (@member = Member.find_by_uid_and_provider(auth["uid"], auth["provider"])).nil?
 
     if unknown_user
-      @member = Member.create(auth)
+      @member = Member.create_by_auth(auth)
       session[:uid] = @member.uid
       redirect_to edit_member_path(@member)
     else
