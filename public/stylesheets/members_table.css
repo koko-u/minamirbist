@@ -31,13 +31,31 @@ tabe.members td {
 
 table.members col.contents {
   background-color: #F8F8FF;
+  width: 400px;
 }
 
 table.members col.profile {
   background-color: #F8F8FF;
-  width: 200px;
+  width: 400px;
 }
 
 table.members col.commands {
   background-color: #F0FFFF;
+  width: auto;
 }
+
+table.members col.name, col.twitter_id {
+  background-color: #F8F8FF;
+  width: 10em;
+}
+
+table.members col.email {
+  background-color: #F8F8FF;
+  width: 20em;
+}
+
+table.members col.blog_url {
+  background-color: #F8F8FF;
+  width: 30em;
+}
+
