@@ -1,0 +1,11 @@
+<h1><%= t('event_info', :scope => [:views, :global]) %></h1>
+<p id="notice"><%= notice %></p>
+
+<%= render 'table' %>
+<br />
+<%= link_to t('edit', :scope => [:views, :global]), edit_event_path(@event) %> |
+<%= link_to t('back', :scope => [:views, :global]), events_member_path(current_member) %>|
+<%= link_to t('destroy', :scope => [:views, :global]), @event,
+                         :confirm => t(:sure?, :default => 'Are you sure?', :scope => [:views, :global]),
+                         :method => :delete %>
+

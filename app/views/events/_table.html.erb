@@ -1,0 +1,24 @@
+<table class="events">
+  <col />
+  <col class="contents">
+  <tr>
+    <th><%= t('event.name', :scope => [:activerecord, :attributes]) %></th>
+    <td><%= @event.name %></td>
+  </tr>
+  <tr>
+    <th><%= t('event.organizer', :scope => [:activerecord, :attributes]) %></th>
+    <td><%= @event.organizer.name %></td>
+  </tr>
+  <tr>
+    <th><%= t('event.date_on', :scope => [:activerecord, :attributes]) %></th>
+    <td><%= @event.date_on.strftime('%Y年%m月%d日') %></td>
+  </tr>
+  <tr>
+    <th><%= t('event.place', :scope => [:activerecord, :attributes]) %></th>
+    <td><%= @event.place %></td>
+  </tr>
+  <tr>
+    <th><%= t('event.contents', :scope => [:activerecord, :attributes]) %></th>
+    <td><%= @event.contents %></td>
+  </tr>
+</table>

@@ -3,10 +3,12 @@ Minamirbist::Application.routes.draw do
 #  get "sessions/create"
 
   resources :events do
-    get 'join', :on => :member
+    get 'join', 'cancel', 'for_organizer', :on => :member
   end
 
-  resources :members
+  resources :members do
+    get 'events', :on => :member
+  end
 
   match "/auth/:provider/callback" => "sessions#create"
   match "/signout" => "sessions#destroy", :as => :signout

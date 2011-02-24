@@ -1,9 +1,7 @@
-<%= render 'shared/navigation' %>
-<h1><%= t('events.listing', :scope => [:views]) %></h1>
+<h1><%= t('member.events', :scope => [:activerecord, :attributes]) %></h1>
 
 <table class="events">
   <col class="name" />
-  <col class="organizer" />
   <col class="date_on" />
   <col class="place" />
   <col class="contents" />
@@ -11,23 +9,25 @@
   <col class="commands" span="3" />
   <tr>
     <th><%= t('event.name', :scope => [:activerecord, :attributes]) %></th>
-    <th><%= t('event.organizer', :scope => [:activerecord, :attributes]) %></th>
     <th><%= t('event.date_on', :scope => [:activerecord, :attributes]) %></th>
     <th><%= t('event.place', :scope => [:activerecord, :attributes]) %></th>
     <th><%= t('event.contents', :scope => [:activerecord, :attributes]) %></th>
     <th><%= t('event.entries.count', :scope => [:activerecord, :attributes]) %></th>
-    <th></th>
+    <th colspan="3"><%= t(:commands, :scope => [:views, :global]) %></th>
   </tr>
 
 <% @events.each do |event| %>
   <tr>
     <td><%= event.name %></td>
-    <td><%= event.organizer.name %></td>
     <td><%= event.date_on.strftime('%Y年%m月%d日') %></td>
     <td><%= event.place %></td>
     <td><%= event.contents %></td>
     <td align="right"><%= number_with_delimiter(event.entries.count) %></td>
-    <td><%= link_to t(:show, :default => 'Show', :scope => [:views, :global]), event %></td>
+    <td><%= link_to t(:show, :default => 'Show', :scope => [:views, :global]), for_organizer_event_path(event) %></td>
+    <td><%= link_to t(:edit, :default => 'Edit', :scope => [:views, :global]), edit_event_path(event) %></td>
+    <td><%= link_to t(:destroy, :default => 'Destroy', :scope => [:views, :global]), event,
+                    :confirm => t(:sure?, :default => 'Are you sure?', :scope => [:views, :global]),
+                    :method => :delete %></td>
   </tr>
 <% end %>
 </table>
@@ -35,4 +35,4 @@
 <br />
 
 <%= link_to t('events.new', :scope => [:views]), new_event_path %> |
-<%= link_to t('members.listing', :scope => [:views]), members_path %>
+<%= link_to t('back', :scope => [:views, :global]), member_path(current_member) %>

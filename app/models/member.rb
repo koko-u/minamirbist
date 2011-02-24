@@ -1,4 +1,5 @@
 class Member < ActiveRecord::Base
+  has_many :entries
   has_many :events, :foreign_key => "organizer"
   class CannotChangeValidator < ActiveModel::EachValidator
     def validate_each(record, attribute, value)

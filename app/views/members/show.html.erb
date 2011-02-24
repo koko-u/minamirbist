@@ -1,3 +1,4 @@
+<h1><%= t('member_info', :scope => [:views, :global]) %></h1>
 <p id="notice"><%= notice %></p>
 
 <table class="members">
@@ -38,10 +39,41 @@
 <% if @member == current_member %>
 |
 <%= link_to t('edit', :scope => [:views, :global]), edit_member_path(@member) %>
+|
+<%= link_to t('member.events', :scope => [:activerecord, :attributes]), events_member_path(@member) %>
 <br />
 <br />
 <%= button_to t(:destroy, :scope => [:views, :global]), current_member,
-              :confirm => t(:sure?, :default => 'Are you sure?', :scope => [:views, :global]),
-              :method => :delete %>
+         :confirm => t(:sure?, :default => 'Are you sure?', :scope => [:views, :global]),
+         :method => :delete %>
 <% end %>
+<hr />
+<h2><%= t('member.entries', :scope => [:activerecord, :attributes]) %></h2>
+<table class="events">
+  <col class="name" />
+  <col class="date_on" />
+  <col class="place" />
+  <col class="contents" />
+  <col class="commands" span="2" />
+  <tr>
+    <th><%= t('event.name', :scope => [:activerecord, :attributes]) %></th>
+    <th><%= t('event.date_on', :scope => [:activerecord, :attributes]) %></th>
+    <th><%= t('event.place', :scope => [:activerecord, :attributes]) %></th>
+    <th><%= t('event.contents', :scope => [:activerecord, :attributes]) %></th>
+    <th colspan="2"></th>
+
+  </tr>
+  <% @member.entries.each do |entry| %>
+  <tr>
+    <td><%= entry.event.name %></td>
+    <td><%= entry.event.date_on.strftime('%Y年%m月%d日') %></td>
+    <td><%= entry.event.place %></td>
+    <td><%= entry.event.contents %></td>
+    <td><%= link_to t('show', :scope => [:views, :global]), event_path(entry.event) %></td>
+    <td><%= link_to t('cancel', :scope => [:views, :global]), cancel_event_path(entry.event) %></td>
+  </tr>
+  <% end %>
+</table>
+
+
 

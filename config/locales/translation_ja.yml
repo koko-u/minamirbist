@@ -23,6 +23,8 @@ ja:
         blog_url: "ブログURL"
         birthday: "誕生日"
         profile: "プロフィール"
+        entries: "参加イベント"
+        events: "主催イベント"
 
       entry:
         event: "イベント"
@@ -38,6 +40,9 @@ ja:
       "sure?": "本当に削除してよいですか？"
       welcom: "ようこそ%{name}さん"
       signout: "ログアウト"
+      member_info: "メンバー詳細"
+      event_info: "イベント詳細"
+      cancel: "キャンセル"
     sessions:
       sign_in: "ログイン"
       sign_in_with_twitter: "Twitter ID でログイン"
@@ -48,8 +53,8 @@ ja:
       editing: "メンバー編集"
     events:
       join: "参加する"
+      cancel: "辞退する"
       listing: "イベント一覧"
-      show: "イベント詳細"
       members: "参加者一覧"
       editing: "イベント編集"
       new: "イベント登録"

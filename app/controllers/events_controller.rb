@@ -21,6 +21,17 @@ class EventsController < ApplicationController
     end
   end
 
+  # GET /events/1/for_organizer
+  # GET /events/1/for_organizer.xml
+  def for_organizer
+    @event = Event.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.xml  { render :xml => @event }
+    end
+  end
+
   # GET /events/new
   # GET /events/new.xml
   def new

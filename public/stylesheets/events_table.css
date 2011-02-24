@@ -29,7 +29,32 @@ tabe.events td {
   white-space: nowrap;
 }
 
+table.events col.name {
+  background-color: #FFC;
+  width: 14em;
+}
+
+table.events col.organizer {
+  background-color: #FFC;
+  width: 8em;
+}
+
+table.events col.place {
+  background-color: #FFC;
+  width: 14em;
+}
+
+table.events col.date_on {
+  background-color: #FFC;
+  width: 10em;
+}
+
 table.events col.contents {
+  background-color: #FFC;
+  width: 26em;
+}
+
+table.events col.count {
   background-color: #FFC;
 }
 

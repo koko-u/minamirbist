@@ -21,6 +21,15 @@ class MembersController < ApplicationController
     end
   end
 
+  def events
+    @events = current_member.events
+
+    respond_to do |format|
+      format.html
+      format.xml { render :xml => @events }
+    end
+  end
+
   # GET /members/new
   # GET /members/new.xml
   def new

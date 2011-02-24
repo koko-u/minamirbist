@@ -3,4 +3,4 @@
 <%= render 'form' %>
 
 <%= link_to t('show', :scope => [:views, :global]), @event %> |
-<%= link_to t('back', :scope => [:views, :global]), events_path %>
+<%= link_to t('back', :scope => [:views, :global]), events_member_path(current_member) %>

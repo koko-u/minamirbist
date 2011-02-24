@@ -1,33 +1,8 @@
-<h1><%= t('events.show', :scope => [:views]) %></h1>
+<h1><%= t('event_info', :scope => [:views, :global]) %></h1>
 <p id="notice"><%= notice %></p>
 
-<table class="events">
-  <col />
-  <col class="contents">
-  <tr>
-    <th><%= t('event.name', :scope => [:activerecord, :attributes]) %></th>
-    <td><%= @event.name %></td>
-  </tr>
-  <tr>
-    <th><%= t('event.organizer', :scope => [:activerecord, :attributes]) %></th>
-    <td><%= @event.organizer.name %></td>
-  </tr>
-  <tr>
-    <th><%= t('event.date_on', :scope => [:activerecord, :attributes]) %></th>
-    <td><%= @event.date_on.strftime('%Y年%m月%d日') %></td>
-  </tr>
-  <tr>
-    <th><%= t('event.place', :scope => [:activerecord, :attributes]) %></th>
-    <td><%= @event.place %></td>
-  </tr>
-  <tr>
-    <th><%= t('event.contents', :scope => [:activerecord, :attributes]) %></th>
-    <td><%= @event.contents %></td>
-  </tr>
-</table>
-
+<%= render 'table' %>
 <br />
-<%= link_to t('edit', :scope => [:views, :global]), edit_event_path(@event) %> |
 <%= link_to t('back', :scope => [:views, :global]), events_path %> |
 <%= link_to t('events.join', :scope => [:views]), join_event_path(@event) %>
 
