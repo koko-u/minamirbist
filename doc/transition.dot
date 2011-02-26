@@ -1,0 +1,75 @@
+digraph 画面遷移 {
+  graph [
+    fontname = "Takaoゴシック"
+  ];
+  node [
+    fontname = "Takaoゴシック"
+    shape = Mrecord
+    style = filled
+  ];
+  edge [
+    fontname = "Takaoゴシック"
+  ];
+  top [ label = "トップ画面" fillcolor = "cyan" ];
+  top -> events [ label = "Twitter ID でログイン" ];
+
+  events  [ label = "イベント一覧" fillcolor = "cyan" ];
+  events -> members [ dir = both
+                      headlabel = "イベント一覧" taillabel = "メンバー一覧"
+                      labeldistance = 5 ];
+  events -> new_event [ label = "イベント登録\n不要か？" fontcolor = "red" ];
+  events -> show_member_profile [ label = "プロフィール" ];
+  events -> top [ label = "ログアウト" ];
+  events -> show_event [ label = "参照" ];
+
+  members [ label = "メンバー一覧"  fillcolor = "cyan" ];
+  members -> show_member_profile [ label = "プロフィール" ];
+  members -> top [ label = "ログアウト" ];
+  members -> show_member [ label = "参照" ];
+
+  show_member [ label = "{<p_m>\nメンバー詳細(他人)\n|<p_e>\n参加イベント\n}" fillcolor = "cyan"];
+  show_member:p_m -> members [ label = "戻る" ];
+  show_member:p_e -> show_event [ label = "参照×" color = "red" fontcolor = "red" ];
+  show_member -> show_member [ label = "キャンセル" color = "red" ];
+
+  show_member_profile [ label = "{<p_m>\nメンバー詳細(本人)\n|<p_e>\n参加イベント\n}"
+                        fillcolor = "cyan" ];
+  show_member_profile:p_m -> events [ label = "戻る" color = "red" ];
+  show_member_profile:p_m -> edit_member [ label = "編集" ];
+  show_member_profile:p_m -> events_member [ label = "主催イベント" ];
+  show_member_profile:p_m -> top [ label = "退会" fontcolor = "red" ];
+  show_member_profile:p_e -> show_event [ label = "参照" ];
+  show_member_profile -> show_member_profile [ label = "キャンセル" ];
+
+  edit_member [ label = "メンバー情報編集" fillcolor = "cyan" ];
+  edit_member -> show_member_profile [ label = "更新する" ];
+  edit_member -> show_member_profile [ label = "戻る" ];
+  edit_member -> show_member_profile [ label = "参照" color = "red" ];
+
+  events_member [ label = "主催イベント一覧" fillcolor = "cyan" ];
+  events_member -> new_event [ label = "イベント登録" ];
+  events_member -> show_member_profile [ label = "戻る" ];
+  events_member -> for_organizer_event [ label = "参照" ];
+  events_member -> edit_event [ label = "編集" ];
+  events_member -> events_member [ label = "削除" ];
+
+  show_event [ label = "{<p_e>\nイベント詳細\n|<p_m>\n参加者一覧\n}" fillcolor = "cyan" ];
+  show_event:p_e -> events [ label = "戻る" ];
+  show_event -> show_event [ label = "参加する" ];
+  show_event:p_m -> show_member [ label = "参照" ];
+
+  for_organizer_event [ label = "主催イベント詳細" fillcolor = "cyan" ];
+  for_organizer_event -> edit_event [ label = "編集" ];
+  for_organizer_event -> events_member [ label = "削除" color = "red" ];
+  for_organizer_event -> events_member [ label = "戻る" ];
+
+  edit_event [ label = "イベント編集" fillcolor = "cyan" ];
+  edit_event -> for_organizer_event [ label = "参照" color = "red" ];
+  edit_event -> events_member [ label = "戻る" ];
+  edit_event -> events_member [ label = "更新する" color = "red" ];
+
+  new_event [ label = "イベント登録" fillcolor = "cyan" ];
+  new_event -> for_organizer_event [ label = "登録する" ];
+  new_event -> events_member [ label = "戻る" color = "red" ];
+
+}

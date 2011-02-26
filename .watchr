@@ -16,3 +16,14 @@ end
 watch("app/(.*/.*)\.rb") do |match|
   run_spec %{spec/#{match[1]}_spec.rb}
 end
+
+watch("app/(.*/.*\.erb)") do |match|
+  run_spec %{spec/#{match[1]}_spec.rb}
+end
+
+watch("doc/.*/*\.dot") do |match|
+  system "rake dot"
+end
+
+# spec/views/events/edit.html.erb_spec.rb
+#  app/views/events/edit.html.erb
