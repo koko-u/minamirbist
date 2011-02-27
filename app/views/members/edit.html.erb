@@ -2,5 +2,4 @@
 
 <%= render 'form' %>
 
-<%= link_to t('show', :scope => [:views, :global]), @member %> |
-<%= link_to t('back', :scope => [:views, :global]), members_path %>
+<%= link_to t('back', :scope => [:views, :global]), current_member.nil? ? root_path : profile_path %>

@@ -43,6 +43,8 @@ ja:
       member_info: "メンバー詳細"
       event_info: "イベント詳細"
       cancel: "キャンセル"
+      "cancel?": "本当にキャンセルしますか？"
+      leave: "退会"
     sessions:
       sign_in: "ログイン"
       sign_in_with_twitter: "Twitter ID でログイン"
@@ -58,4 +60,5 @@ ja:
       members: "参加者一覧"
       editing: "イベント編集"
       new: "イベント登録"
+    profile: "プロフィール"
 

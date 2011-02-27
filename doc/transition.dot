@@ -11,44 +11,47 @@ digraph 画面遷移 {
     fontname = "Takaoゴシック"
   ];
   top [ label = "トップ画面" fillcolor = "cyan" ];
-  top -> events [ label = "Twitter ID でログイン" ];
+  branch [ label = "<p_a>非会員|<p_b>会員" fillcolor = "gray" ];
+  top -> branch [ label = "ログイン" ];
+  branch:p_b -> events [ label = "認証" ];
+  branch:p_a -> edit_member [ label = "認証" ];
 
   events  [ label = "イベント一覧" fillcolor = "cyan" ];
   events -> members [ dir = both
                       headlabel = "イベント一覧" taillabel = "メンバー一覧"
                       labeldistance = 5 ];
-  events -> new_event [ label = "イベント登録\n不要か？" fontcolor = "red" ];
-  events -> show_member_profile [ label = "プロフィール" ];
+  events -> show_profile [ label = "プロフィール" ];
   events -> top [ label = "ログアウト" ];
   events -> show_event [ label = "参照" ];
 
   members [ label = "メンバー一覧"  fillcolor = "cyan" ];
-  members -> show_member_profile [ label = "プロフィール" ];
+  members -> show_profile [ label = "プロフィール" ];
   members -> top [ label = "ログアウト" ];
   members -> show_member [ label = "参照" ];
 
-  show_member [ label = "{<p_m>\nメンバー詳細(他人)\n|<p_e>\n参加イベント\n}" fillcolor = "cyan"];
+  show_member [ label = "{<p_m>\nメンバー詳細\n|<p_e>\n参加イベント\n}" fillcolor = "cyan"];
   show_member:p_m -> members [ label = "戻る" ];
-  show_member:p_e -> show_event [ label = "参照×" color = "red" fontcolor = "red" ];
-  show_member -> show_member [ label = "キャンセル" color = "red" ];
 
-  show_member_profile [ label = "{<p_m>\nメンバー詳細(本人)\n|<p_e>\n参加イベント\n}"
+  show_profile [ label = "{<p_m>\nプロフィール\n|<p_e>\n参加イベント\n}"
                         fillcolor = "cyan" ];
-  show_member_profile:p_m -> events [ label = "戻る" color = "red" ];
-  show_member_profile:p_m -> edit_member [ label = "編集" ];
-  show_member_profile:p_m -> events_member [ label = "主催イベント" ];
-  show_member_profile:p_m -> top [ label = "退会" fontcolor = "red" ];
-  show_member_profile:p_e -> show_event [ label = "参照" ];
-  show_member_profile -> show_member_profile [ label = "キャンセル" ];
+  show_profile:p_m -> events [ label = "戻る" ];
+  show_profile:p_m -> edit_member [ label = "編集" ];
+  show_profile:p_m -> events_member [ label = "主催イベント" ];
+  show_profile:p_m -> top [ label = "退会" ];
+  show_profile:p_e -> show_event [ label = "参照" ];
+  show_profile -> show_profile [ label = "キャンセル" ];
 
   edit_member [ label = "メンバー情報編集" fillcolor = "cyan" ];
-  edit_member -> show_member_profile [ label = "更新する" ];
-  edit_member -> show_member_profile [ label = "戻る" ];
-  edit_member -> show_member_profile [ label = "参照" color = "red" ];
+  edit_branch [ label = "<p_a>非会員|<p_b>会員" fillcolor = "gray" ];
+  edit_member -> show_profile [ label = "更新する" ];
+  edit_member -> edit_branch [ label = "戻る" ];
+  edit_branch:p_a -> top
+  edit_branch:p_b -> show_profile
+
 
   events_member [ label = "主催イベント一覧" fillcolor = "cyan" ];
   events_member -> new_event [ label = "イベント登録" ];
-  events_member -> show_member_profile [ label = "戻る" ];
+  events_member -> show_profile [ label = "戻る" ];
   events_member -> for_organizer_event [ label = "参照" ];
   events_member -> edit_event [ label = "編集" ];
   events_member -> events_member [ label = "削除" ];
@@ -60,16 +63,16 @@ digraph 画面遷移 {
 
   for_organizer_event [ label = "主催イベント詳細" fillcolor = "cyan" ];
   for_organizer_event -> edit_event [ label = "編集" ];
-  for_organizer_event -> events_member [ label = "削除" color = "red" ];
+  for_organizer_event -> events_member [ label = "削除" ];
   for_organizer_event -> events_member [ label = "戻る" ];
 
   edit_event [ label = "イベント編集" fillcolor = "cyan" ];
-  edit_event -> for_organizer_event [ label = "参照" color = "red" ];
+  edit_event -> for_organizer_event [ label = "参照" ];
   edit_event -> events_member [ label = "戻る" ];
-  edit_event -> events_member [ label = "更新する" color = "red" ];
+  edit_event -> events_member [ label = "更新する" ];
 
   new_event [ label = "イベント登録" fillcolor = "cyan" ];
   new_event -> for_organizer_event [ label = "登録する" ];
-  new_event -> events_member [ label = "戻る" color = "red" ];
+  new_event -> events_member [ label = "戻る" ];
 
 }

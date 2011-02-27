@@ -21,6 +21,17 @@ class MembersController < ApplicationController
     end
   end
 
+  # GET /profile
+  # GET /profile.xml
+  def profile
+    @member = current_member
+
+    respond_to do |format|
+      format.html 
+      format.xml  { render :xml => @member }
+    end
+  end
+
   def events
     @events = current_member.events
 
