@@ -44,8 +44,8 @@ class MembersController < ApplicationController
   # GET /members/new
   # GET /members/new.xml
   def new
-    @member = Member.new
-
+    @member = Member.new(session[:member])
+    @member.uid = session[:uid]
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @member }
@@ -80,7 +80,7 @@ class MembersController < ApplicationController
 
     respond_to do |format|
       if @member.update_attributes(params[:member])
-        format.html { redirect_to(@member, :notice => 'Member was successfully updated.') }
+        format.html { redirect_to profile_path, :notice => 'Member was successfully updated.' }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
