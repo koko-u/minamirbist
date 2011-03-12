@@ -31,7 +31,7 @@ gem 'omniauth'
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
 group :development, :test do
-  gem 'webrat'
+  gem 'capybara'
   gem 'cucumber'
   gem 'cucumber-rails'
   gem 'rspec'
@@ -39,4 +39,6 @@ group :development, :test do
   gem 'launchy'
   gem 'spork', '~> 0.9.0.rc'
   gem 'watchr'
+  gem 'factory_girl_rails', :git => 'http://github.com/CodeMonkeySteve/factory_girl_rails.git'
+  gem 'timecop'
 end

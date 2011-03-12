@@ -9,6 +9,8 @@ Spork.prefork do
   ENV["RAILS_ENV"] ||= 'test'
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
+  require 'capybara/rails'
+  require 'timecop'
 
   # Requires supporting ruby files with custom matchers and macros, etc,
   # in spec/support/ and its subdirectories.
@@ -37,7 +39,16 @@ end
 
 Spork.each_run do
   # This code will be run each time you run your specs.
-  
+  # Factory.factories.clear
+  # Factory.definition_file_paths.each do |path|
+  #   load("#{path}.rb") if File.exists?("#{path}.rb")
+
+  #   if File.directory? path
+  #     Dir[File.join(path, '*.rb')].each do |file|
+  #       load file
+  #     end
+  #   end
+  # end
 end
 
 # --- Instructions ---
