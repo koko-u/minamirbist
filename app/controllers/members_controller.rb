@@ -56,6 +56,7 @@ class MembersController < ApplicationController
   # GET /members/1/edit
   def edit
     @member = Member.find(params[:id])
+    redirect_to members_path unless @member == current_member
   end
 
   # POST /members
