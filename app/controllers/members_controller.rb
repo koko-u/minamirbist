@@ -1,4 +1,5 @@
 class MembersController < ApplicationController
+  before_filter :authorize
   # GET /members
   # GET /members.xml
   def index
