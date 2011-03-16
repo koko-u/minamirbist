@@ -37,7 +37,7 @@
 
 <%= link_to t('back', :scope => [:views, :global]), events_path %>
 <%= link_to t('edit', :scope => [:views, :global]), edit_member_path(@member) %> |
-<%= link_to t('member.events', :scope => [:activerecord, :attributes]), events_member_path(@member) %>
+<%= link_to t('member.events', :scope => [:activerecord, :attributes]), my_events_path %>
 <br />
 <%= button_to t(:leave, :scope => [:views, :global]), current_member,
          :confirm => t(:sure?, :default => 'Are you sure?', :scope => [:views, :global]),

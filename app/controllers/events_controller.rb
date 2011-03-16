@@ -89,7 +89,7 @@ class EventsController < ApplicationController
     @event.destroy
 
     respond_to do |format|
-      format.html { redirect_to events_member_path(current_member) }
+      format.html { redirect_to my_events_path }
       format.xml  { head :ok }
     end
   end

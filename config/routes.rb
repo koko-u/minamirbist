@@ -9,11 +9,10 @@ Minamirbist::Application.routes.draw do
     end
   end
 
-  resources :members do
-    get 'events', :on => :member
-  end
+  resources :members
 
   match "/profile" => "members#profile", :as => :profile
+  match "/profile/events" => "members#events", :as => :my_events
 
   match "/auth/:provider/callback" => "sessions#create"
   match "/signout" => "sessions#destroy", :as => :signout

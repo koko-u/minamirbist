@@ -28,11 +28,13 @@ class MembersController < ApplicationController
     @member = current_member
 
     respond_to do |format|
-      format.html 
+      format.html
       format.xml  { render :xml => @member }
     end
   end
 
+  # GET /profile/events
+  # GET /profile/events.xml
   def events
     @events = current_member.events
 

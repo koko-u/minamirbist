@@ -38,7 +38,7 @@ digraph 画面遷移 {
                         fillcolor = "cyan" ];
   show_profile:p_m -> events [ label = "戻る" ];
   show_profile:p_m -> edit_member [ label = "編集" ];
-  show_profile:p_m -> events_member [ label = "主催イベント" ];
+  show_profile:p_m -> my_events [ label = "主催イベント" ];
   show_profile:p_m -> top [ label = "退会" ];
   show_profile:p_e -> show_event [ label = "参照" ];
   show_profile:p_e -> show_profile:p_e [ label = "キャンセル" ];
@@ -47,12 +47,12 @@ digraph 画面遷移 {
   edit_member -> show_profile [ label = "更新する" ];
   edit_member -> show_profile [ label = "戻る" ];
 
-  events_member [ label = "主催イベント一覧" fillcolor = "cyan" ];
-  events_member -> new_event [ label = "イベント登録" ];
-  events_member -> show_profile [ label = "戻る" ];
-  events_member -> for_organizer_event [ label = "参照" ];
-  events_member -> edit_event [ label = "編集" ];
-  events_member -> events_member [ label = "削除" ];
+  my_events [ label = "主催イベント一覧" fillcolor = "cyan" ];
+  my_events -> new_event [ label = "イベント登録" ];
+  my_events -> show_profile [ label = "戻る" ];
+  my_events -> for_organizer_event [ label = "参照" ];
+  my_events -> edit_event [ label = "編集" ];
+  my_events -> my_events [ label = "削除" ];
 
   show_event [ label = "<p_e>\nイベント詳細\n|<p_m>\n参加者一覧\n" fillcolor = "cyan" ];
   show_event:p_e -> events [ label = "戻る" ];
@@ -61,17 +61,17 @@ digraph 画面遷移 {
 
   for_organizer_event [ label = "主催イベント詳細" fillcolor = "cyan" ];
   for_organizer_event -> edit_event [ label = "編集" ];
-  for_organizer_event -> events_member [ label = "削除" ];
-  for_organizer_event -> events_member [ label = "戻る" ];
+  for_organizer_event -> my_events [ label = "削除" ];
+  for_organizer_event -> my_events [ label = "戻る" ];
 
   edit_event [ label = "イベント編集" fillcolor = "cyan" ];
   edit_event -> for_organizer_event [ label = "参照" ];
-  edit_event -> events_member [ label = "戻る" ];
-  edit_event -> events_member [ label = "更新する" ];
+  edit_event -> my_events [ label = "戻る" ];
+  edit_event -> my_events [ label = "更新する" ];
 
   new_event [ label = "イベント登録" fillcolor = "cyan" ];
   new_event -> for_organizer_event [ label = "登録する" ];
-  new_event -> events_member [ label = "戻る" ];
+  new_event -> my_events [ label = "戻る" ];
 
   new_member [ label = "メンバー登録" fillcolor = "cyan" ];
   new_member -> top [ label = "戻る" ];
