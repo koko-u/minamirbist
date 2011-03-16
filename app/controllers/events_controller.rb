@@ -47,6 +47,10 @@ class EventsController < ApplicationController
   # GET /events/1/edit
   def edit
     @event = Event.find(params[:id])
+    unless @event.organizer == current_member
+      flash[:notice] = I18n.t(:cannot_edit)
+      redirect_to events_path 
+    end
   end
 
   # POST /events
