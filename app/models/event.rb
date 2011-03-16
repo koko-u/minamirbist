@@ -19,4 +19,12 @@ class Event < ActiveRecord::Base
     Entry.create(:event => self, :member => member).valid?
   end
 
+  def cancel(member)
+    joined_entries = Entry.where(:event_id => self, :member_id => member)
+    unless joined_entries.empty?
+      joined_entries.map(&:destroy)
+    else
+      false
+    end
+  end
 end

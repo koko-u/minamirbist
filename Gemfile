@@ -41,4 +41,5 @@ group :development, :test do
   gem 'watchr'
   gem 'factory_girl_rails', :git => 'http://github.com/CodeMonkeySteve/factory_girl_rails.git'
   gem 'timecop'
+  gem 'mocha'
 end

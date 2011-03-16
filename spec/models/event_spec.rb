@@ -69,4 +69,31 @@ describe Event do
       expect { event.join(wada) }.not_to change { Event.count }
     end
   end
+
+  context "イベントをキャンセルする" do 
+    let(:wada) { Factory.create(:member, :name => 'wada') }
+    let!(:event) { Factory.create(:event, :organizer => kato) }
+    let!(:entry) { Factory.create(:entry, :member => kato, :event => event) }
+    context "実際にイベントに参加している参加者" do
+      it "entry 自体が削除される" do 
+        event.cancel(kato)
+        Entry.where(:event_id => event, :member_id => kato).should be_empty
+      end
+      it "event.entries から参加者は削除される" do 
+        event.cancel(kato)
+        event.entries.should_not include(kato)
+      end
+      it "戻り値は true" do 
+        event.cancel(kato).should be_true
+      end
+    end
+    context "イベントに参加していない参加者をキャンセル" do 
+      it "戻り値は false" do 
+        event.cancel(wada).should be_false
+      end
+      it "event.entries の数は変わらない" do 
+        expect { event.cancel(wada) }.not_to change { event.entries.count }
+      end
+    end
+  end
 end

@@ -94,13 +94,24 @@ class EventsController < ApplicationController
     end
   end
 
-  # GET /event/1/join
+  # GET /events/1/join
   def join
     @event = Event.find(params[:id])
     @event.join(current_member)
 
     respond_to do |format|
       format.html { redirect_to event_path(@event) }
+      format.xml  { render :xml => @event }
+    end
+  end
+
+  # PUT /events/1/cancel
+  def cancel
+    @event = Event.find(params[:id])
+    @event.cancel(current_member)
+
+    respond_to do |format|
+      format.html { redirect_to profile_path }
       format.xml  { render :xml => @event }
     end
   end
