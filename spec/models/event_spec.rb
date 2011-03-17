@@ -26,15 +26,23 @@ describe Event do
     after do
       Timecop.return
     end
-    it "登録する時、イベントの開催日は未来日付である" do
-      Timecop.freeze(Date.parse('2011-03-10'))
-      event = Factory.build(:event, :organizer => kato)
-      event.date_on = Date.parse('2011-03-11')
-      event.should be_valid
-      event.date_on = Date.parse('2011-03-10')
-      event.should be_invalid
-      event.date_on = Date.parse('2011-03-09')
-      event.should be_invalid
+    context "登録する時、イベントの開催日は未来日付である" do
+      before do
+        Timecop.freeze(Date.parse('2011-03-10'))
+      end
+      let(:event) { Factory.build(:event, :organizer => kato) }
+      it "明日の開催は OK" do 
+        event.date_on = Date.parse('2011-03-11')
+        event.save.should be_true
+      end
+      it "当日の開催は NG" do 
+        event.date_on = Date.parse('2011-03-10')
+        event.save.should be_false
+      end
+      it "昨日の開催は NG" do 
+        event.date_on = Date.parse('2011-03-09')
+        event.save.should be_false
+      end
     end
     it "イベント開催日当日も変更はできる" do
       Timecop.freeze(Date.parse('2011-03-10'))
@@ -94,6 +102,17 @@ describe Event do
       it "event.entries の数は変わらない" do 
         expect { event.cancel(wada) }.not_to change { event.entries.count }
       end
+    end
+  end
+
+  context "イベントを削除できる" do 
+    it "イベントに対する参加情報も併せて削除される" do 
+      kato = Factory.create(:member, :name => 'kato')
+      wada = Factory.create(:member, :name => 'wada')
+      event = Factory.create(:event, :name => 'event', :organizer => kato)
+      entry = Factory.create(:entry, :event => event, :member => wada)
+      event.destroy
+      Entry.where(:id => entry).should be_empty
     end
   end
 end
