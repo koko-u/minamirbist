@@ -28,8 +28,16 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
 
     respond_to do |format|
-      format.html
-      format.xml  { render :xml => @event }
+      if @event.organizer == current_member
+        format.html
+        format.xml  { render :xml => @event }
+      else
+        format.html { redirect_to events_path, :notice => I18n.t(:cannot_edit) }
+        format.xml { render :xml => @event }
+      end
+    end
+    if @event.organizer == current_member
+    else
     end
   end
 
