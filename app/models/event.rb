@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  has_many :entries
+  has_many :entries, :dependent => :destroy
   belongs_to :organizer, :class_name => "Member", :foreign_key => "organizer"
 
   validates :organizer, :presence => true
