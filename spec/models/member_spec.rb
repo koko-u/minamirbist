@@ -67,9 +67,8 @@ describe Member do
   it "他人のプロフィールは編集できない" do
     login_member   = Factory.create(:member, :name => 'kozaki')
     another_member = Factory.create(:member, :name => 'watabe')
-    ApplicationController.stub(:current_member).and_return(login_member)
+    ApplicationController.stubs(:current_member).returns(login_member)
     another_member.update_attributes(:profile => "yahoooo!").should be_false
     login_member.errors[:base].should have(1).item
   end
-
 end
