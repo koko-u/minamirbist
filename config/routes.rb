@@ -16,6 +16,7 @@ Minamirbist::Application.routes.draw do
 
   match "/auth/:provider/callback" => "sessions#create"
   match "/signout" => "sessions#destroy", :as => :signout
+  match "/auth/failure" => "sessions#failure"
 
   root :to => 'sessions#index'
 

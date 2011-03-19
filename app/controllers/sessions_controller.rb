@@ -27,4 +27,8 @@ class SessionsController < ApplicationController
     session[:member] = nil
     redirect_to root_path, :notice => I18n.t('sessions.signout', :scope => [:views])
   end
+
+  def failure
+    redirect_to root_path, :notice => I18n.t('failed', :scope => [:views])
+  end
 end
