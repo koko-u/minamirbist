@@ -13,44 +13,64 @@ describe MembersController do
   end
 
   describe "GET index" do
-    it "すべての Member オブジェクトの一覧が得られる" do
-      get :index
-      assigns(:members).should =~ [@kato, @oda]
+    context "すべての Member オブジェクトの一覧が得られる" do
+      before do
+        get :index
+      end
+      it { assigns(:members).should =~ [@kato, @oda] }
+      it { response.should be_success }
+      it { response.should render_template('index') }
     end
-    it "ログインせずに /members にアクセスするとトップにリダイレクトされる" do 
-      logout
-      (get :index).should redirect_to(root_path)
+    context "ログインせずに /members にアクセスするとトップにリダイレクトされる" do 
+      before do
+        logout
+      end
+      subject { get :index }
+      it { should redirect_to(root_path) }
     end
   end
+
   describe "GET show" do
-    it "指定されたメンバーが得られる" do
+    before do 
       Member.stubs(:find).with("100").returns(@oda)
       get :show, :id => "100"
+    end
+    it "指定されたメンバーが得られる" do
       assigns(:member).should == @oda
     end
+    it { response.should be_success }
+    it { response.should render_template('show') }
   end
 
   describe "GET profile" do 
-    it "現在ログインしているユーザの情報が得られる" do 
+    before do 
       get :profile
+    end
+    it "現在ログインしているユーザの情報が得られる" do 
       assigns(:member).should == @kato
     end
+    it { response.should be_success }
+    it { response.should render_template('profile') }
   end
 
   describe "GET events" do 
-    it "主催しているイベントの一覧が得られる" do 
-      my_event = Factory.create(:event, :name => 'my event', 
-                                :organizer => @kato)
-      oda_event = Factory.create(:event, :name => 'oda event',
-                                 :organizer => @oda)
+    before do 
+      @my_event = Factory.create(:event, :name => 'my event', 
+                                 :organizer => @kato)
+      @oda_event = Factory.create(:event, :name => 'oda event',
+                                  :organizer => @oda)
       get :events
-      assigns(:events).should == [my_event]
     end
+    it "主催しているイベントの一覧が得られる" do 
+      assigns(:events).should == [@my_event]
+    end
+    it { response.should be_success }
+    it { response.should render_template('events') }
   end
 
   describe "GET new" do
-    it "新規で作成されるメンバーには既に session の内容がセットされている" do
-      session[:member] = { 
+    before do 
+      @given_attributs = { 
         :name => 'name',
         :twitter_id => 'twitter',
         :profile => 'profile',
@@ -58,8 +78,9 @@ describe MembersController do
         :provider => 'provider',
         :birthday => Date.parse('2010-03-10')
       }
-      session[:uid] = 'uid'
-      get :new
+      get :new, { }, { :member => @given_attributs, :uid => 'uid'}
+    end
+    it "新規で作成されるメンバーには既に session の内容がセットされている" do
       assigns(:member).name.should == "name"
       assigns(:member).twitter_id.should == "twitter"
       assigns(:member).profile.should == "profile"
@@ -67,6 +88,8 @@ describe MembersController do
       assigns(:member).provider.should == "provider"
       assigns(:member).birthday.should == Date.parse('2010-03-10')
     end
+    it { response.should be_success }
+    it { response.should render_template('new') }
   end
 
   describe "GET edit" do
