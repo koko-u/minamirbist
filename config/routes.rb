@@ -4,8 +4,8 @@ Minamirbist::Application.routes.draw do
 
   resources :events do
     member do
-      get 'join', 'for_organizer'
-      put 'cancel'
+      get 'for_organizer'
+      put 'join', 'cancel'
     end
   end
 

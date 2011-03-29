@@ -4,7 +4,7 @@
 <%= render 'table' %>
 <br />
 <%= link_to t('back', :scope => [:views, :global]), events_path %> |
-<%= link_to t('events.join', :scope => [:views]), join_event_path(@event) %>
+<%= link_to t('events.join', :scope => [:views]), join_event_path(@event), :method => :put %>
 
 <hr />
 <h2><%= t('events.members', :scope => [:views]) %></h2>
