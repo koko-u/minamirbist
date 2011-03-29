@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require 'spork'
 
 Spork.prefork do
@@ -55,16 +56,23 @@ end
 
 Spork.each_run do
   # This code will be run each time you run your specs.
-  # Factory.factories.clear
-  # Factory.definition_file_paths.each do |path|
-  #   load("#{path}.rb") if File.exists?("#{path}.rb")
+  # app/ 以下が更新された場合にリロードする
+  ActiveSupport::Dependencies.clear
+  ActiveRecord::Base.instantiate_observers
 
-  #   if File.directory? path
-  #     Dir[File.join(path, '*.rb')].each do |file|
-  #       load file
-  #     end
-  #   end
-  # end
+  FactoryGirl.registry = FactoryGirl::Registry.new
+  FactoryGirl.definition_file_paths.each do |path|
+    load("#{path}.rb") if File.exists?("#{path}.rb")
+
+    if File.directory? path
+      Dir[File.join(path, '*.rb')].each do |file|
+        load file
+      end
+    end
+  end
+
+  # Routes のリロード
+  Minamirbist::Application.reload_routes!
 end
 
 # --- Instructions ---
