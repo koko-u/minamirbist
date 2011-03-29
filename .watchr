@@ -21,6 +21,12 @@ watch("app/(.*/.*\.erb)") do |match|
   run_spec %{spec/#{match[1]}_spec.rb}
 end
 
+watch("config/routes.rb") do |match|
+  Dir["spec/routing/*_spec.rb"].each do |spec_file|
+    run_spec spec_file
+  end
+end
+
 watch("doc/.*/*\.dot") do |match|
   system "rake dot"
 end
